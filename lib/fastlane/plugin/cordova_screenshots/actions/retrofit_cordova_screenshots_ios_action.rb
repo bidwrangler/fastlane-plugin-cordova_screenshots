@@ -162,10 +162,10 @@ module Fastlane
         #
         # Add files (fastlane configured UI Unit Tests) into target (via test group)
         #
-        UI.message("Adding Pre-Configured UI Unit Tests (*.plist and *.swift) to Test Group '#{scheme_name}'...")
+        UI.message("Adding Pre-Configured UI Unit Tests (*.swift) to Test Group '#{scheme_name}'...")
 
         files = []
-        Dir["#{config_folder}*.plist", "#{config_folder}*.swift"].each do |file| # config_folder ends with / already
+        Dir["#{config_folder}*.swift"].each do |file| # config_folder ends with / already
           UI.message("Adding UI Test Source '#{file}'")
           files << test_group.new_reference(File.absolute_path(file), '<absolute>')
         end
@@ -263,12 +263,11 @@ module Fastlane
                                        description: 'The Bundle ID of the iOS App, eg: ie.littlevista.whateverapp',
                                        default_value: CredentialsManager::AppfileConfig.try_fetch_value(:package_name),
                                        optional: false),
-          FastlaneCore::ConfigItem.new(key: :swift_version,
-                                       env_name: 'CORDOVA_SCREENSHOTS_SWIFT_VERSION',
-                                       description: 'Swift Version to target',
-                                       default_value: CordovaScreenshots::CORDOVA_SCREENSHOTS_DEFAULT_SWIFT_VERSION,
-                                       optional: false)
-
+         FastlaneCore::ConfigItem.new(key: :swift_version,
+                                      env_name: 'CORDOVA_SCREENSHOTS_SWIFT_VERSION',
+                                      description: 'Swift Version to target',
+                                      default_value: CordovaScreenshots::CORDOVA_SCREENSHOTS_DEFAULT_SWIFT_VERSION,
+                                      optional: false)
         ]
       end
 
