@@ -211,7 +211,10 @@ module Fastlane
         scheme.add_test_target(target)
         scheme.add_build_target(main_target)
         scheme.set_launch_target(main_target)
-
+        launch_action = scheme.instance_variable_get :@launch_action
+        launch_action.disable_main_thread_checker=true
+        test_action = scheme.instance_variable_get :@test_action
+        test_action.disable_main_thread_checker=true
         #
         # Save scheme and project
         #
