@@ -5,7 +5,6 @@
 //  Created by Chris Starkey on 06/08/2020.
 //
 //
-
 import XCTest
 
 class ui_snapshots: XCTestCase {
@@ -18,6 +17,8 @@ class ui_snapshots: XCTestCase {
         setupSnapshot(app)
 
         app.launch()
+        sleep(5)
+        app.tap()
 
     }
 
@@ -28,9 +29,6 @@ class ui_snapshots: XCTestCase {
     func testSnapshots() {
           XCUIApplication().launch()
           sleep(5)
-          if XCUIApplication().buttons["Allow"].exists{
-               XCUIApplication().buttons["Allow"].tap()
-          }
           XCUIApplication().buttons["Menu"].tap()
           sleep(5)
           XCUIApplication().buttons["SIGN IN"].tap()
@@ -51,4 +49,3 @@ class ui_snapshots: XCTestCase {
           snapshot("3Catalog")
     }
   }
-
